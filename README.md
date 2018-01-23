@@ -1,4 +1,4 @@
-# Rt7Desk2018
+# electron-angular-auth0
 
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.28.3.
 
