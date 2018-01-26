@@ -1,0 +1,11 @@
+interface AuthConfig {
+  clientID: string;
+  domain: string;
+  callbackURL: string;
+}
+
+export const AUTH_CONFIG: AuthConfig = {
+  clientID: 'euptZpLVcELaZiHrjhuYcUHe_5rvQcjd',
+  domain: 'gco-dev.auth0.com',
+  callbackURL: 'http://localhost:3000/callback'
+};
