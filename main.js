@@ -1,4 +1,4 @@
-const {app, BrowserWindow} = require('electron')
+const { app, protocol, BrowserWindow } = require('electron')
 const path = require('path')
 const url = require('url')
 
@@ -36,11 +36,21 @@ function createWindow () {
 // Este método será chamado quando o Electron tiver finalizado
 // a inicialização e está pronto para criar a janela browser.
 // Algumas APIs podem ser usadas somente depois que este evento ocorre.
-app.on('ready', createWindow)
+app.on('ready', () => {
+  createWindow();
+
+  protocol.registerFileProtocol('rt7-desktop', (request, callback) => {
+    const url = request.url.substr(14);
+
+    win.loadURL(`file:///${process.cwd()}/${url}`);
+  }, (error) => {
+    if (error) console.error('Failed to register protocol')
+  })
+})
 
 // Finaliza quando todas as janelas estiverem fechadas.
 app.on('window-all-closed', () => {
-  // No macOS é comum para aplicativos e sua barra de menu 
+  // No macOS é comum para aplicativos e sua barra de menu
   // permaneçam ativo até que o usuário explicitamente encerre com Cmd + Q
   if (process.platform !== 'darwin') {
     app.quit()
