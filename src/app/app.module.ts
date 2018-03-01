@@ -13,13 +13,16 @@ import { ROUTES } from './app.routes';
 import { AuthService } from './auth/auth.service';
 import { CallbackComponent } from './callback/callback.component';
 
+import { JwplayerModule } from "./shared/jwplayer/jwplayer.module";
+
 @NgModule({
   declarations: [
     AppComponent,
-	HomeComponent,
-	CallbackComponent
+	  HomeComponent,
+	  CallbackComponent
   ],
   imports: [
+    JwplayerModule,
     BrowserModule,
     FormsModule,
     HttpModule,
